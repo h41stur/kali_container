@@ -1,6 +1,13 @@
 #!/bin/bash
 
 sudo docker build -t kali .
+serv=$(sudo xhost | grep LOCAL | wc -l)
+
+if [ $serv -eq 0 ]
+then
+		sudo xhost +Local:root
+fi
+
 
 mkdir -p $HOME/.prog
 cp kali.sh $HOME/.prog
