@@ -1,6 +1,6 @@
 # KALI CONTAINER
 
-Kali linux customizado com minhas ferramentas principais, feito para ser versátil e podera ser utilizadas em qualquer ambiente, contando com execução de aplicações GUI.
+Kali linux customizado com minhas ferramentas principais, feito para ser versátil e poder ser utilizado em qualquer ambiente, contando com execução de aplicações GUI.
 
 ## Instalação
 
