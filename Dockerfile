@@ -13,15 +13,10 @@ RUN echo "wireshark-common wireshark-common/install-setuid boolean true" | debco
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 RUN apt install kali-tools-top10 -y
 RUN dbus-uuidgen > /etc/machine-id
-RUN apt install locate -y
-RUN apt install wget -y
-RUN apt install git -y
-RUN apt install vim -y
-RUN apt install golang -y
-RUN apt install python3 -y
-RUN apt install python3-pip -y
-RUN apt install feroxbuster -y
-RUN apt install nikto -y
-RUN apt install gem -y
+RUN apt install -y sublist3r locate wget git vim golang python3 python3-pip feroxbuster nikto gem burpsuite hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan
 RUN gem install evil-winrm
-RUN apt install -y burpsuite hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan
+RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+RUN mv /root/go/bin/subfinder /usr/bin/
+RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+RUN mv /root/go/bin/nuclei /usr/bin/
+RUN nuclei -update-templates
