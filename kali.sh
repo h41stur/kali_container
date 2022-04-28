@@ -1,6 +1,13 @@
 #!/bin/bash
 
 dir=$HOME/pentest/
+xh=$(sudo xhost | grep LOCAL | wc -l)
+
+if [ $xh -eq 0 ]
+then
+		sudo xhost +Local:root >/dev/null
+fi
+
 
 if [ "$1" == "" ]
 then
