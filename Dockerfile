@@ -3,7 +3,6 @@ FROM kalilinux/kali-rolling
 WORKDIR /resources
 
 COPY .vimrc /root/
-COPY proxychains4.conf /etc/proxychains4.conf
 
 RUN apt update
 RUN apt upgrade -y
@@ -21,3 +20,5 @@ RUN mv /root/go/bin/subfinder /usr/bin/
 RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 RUN mv /root/go/bin/nuclei /usr/bin/
 RUN nuclei -update-templates
+
+COPY proxychains4.conf /etc/proxychains4.conf
