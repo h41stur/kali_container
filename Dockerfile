@@ -3,6 +3,7 @@ FROM kalilinux/kali-rolling
 WORKDIR /resources
 
 COPY .vimrc /root/
+COPY proxychains4.conf /etc/proxychains4.conf
 
 RUN apt update
 RUN apt upgrade -y
@@ -13,7 +14,7 @@ RUN echo "wireshark-common wireshark-common/install-setuid boolean true" | debco
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 RUN apt install kali-tools-top10 -y
 RUN dbus-uuidgen > /etc/machine-id
-RUN apt install -y sublist3r locate wget git vim golang python3 python3-pip feroxbuster nikto gem burpsuite hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan telnet netcat-openbsd whois
+RUN apt install -y sublist3r locate wget git vim golang python3 python3-pip feroxbuster nikto gem burpsuite hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan telnet netcat-traditional whois
 RUN gem install evil-winrm
 RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 RUN mv /root/go/bin/subfinder /usr/bin/
