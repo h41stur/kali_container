@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+# pacman -S ttf-nerd-fonts-symbols-mono
+
 sudo docker build -t kali .
 serv=$(sudo xhost | grep LOCAL | wc -l)
 
