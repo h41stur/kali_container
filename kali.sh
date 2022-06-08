@@ -17,6 +17,12 @@ then
 elif [ "$1" == "bash" ]
 then
 		sudo docker run --rm -it -v $dir:/resources -v /tmp/.X11-unix/:/tmp/.X11-unix/ --net=host --privileged -e DISPLAY=$DISPLAY kali $1
+elif [ "$1" == "pyserv" ]
+then
+    sudo docker run --rm -it -v $dir:/resources -v /tmp/.X11-unix/:/tmp/.X11-unix/ --net=host --privileged -e DISPLAY=$DISPLAY kali python3 -m http.server $2
+elif [ "$1" == "msf" ]
+then
+    sudo docker run --rm -it -v $dir:/resources -v /tmp/.X11-unix/:/tmp/.X11-unix/ --net=host --privileged -e DISPLAY=$DISPLAY kali msfconsole
 else
 		sudo docker run --rm -v $dir:/resources -v /tmp/.X11-unix/:/tmp/.X11-unix/ --net=host -e DISPLAY=$DISPLAY --privileged -d kali $1 >/dev/null
 fi
