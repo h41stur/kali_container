@@ -156,3 +156,34 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+function logCommands {
+    jsonlog=$(echo "{\"hostname\":\"$(hostname)\",\"user\":\"$(whoami)\",\"pid\":$$,\"cwd\":\"$(pwd)\",\"command\":\"$(history 1 | sed 's/^[ ]*[0-9]\+[ ]*//' )\",\"status_code\":$status_code,\"date_begin\":$date_begin,\"date_end\":$date_end,\"elapsed\":$elapsed}" >> ./5-logs/rsyslogcommands/commands.log)
+#    logger -p local6.debug "$jsonlog"
+}
+
+# BASH PREEXEC
+
+if [[ -f ~/.bash-preexec.sh ]]; then
+    unset preexec_functions
+    unset precmd_functions
+    export date_begin=0
+    export date_end=0
+
+    preexec_timestamp() {
+        export date_begin=$(date +%s);
+        echo -e "Begin: $(date +%Y%m%d%H%M%S)\n";
+    }
+
+    precmd_timestamp() {
+        export status_code="$?";
+        export date_end=$(date +%s);
+        echo -e "\nEnd: $(date +%Y%m%d%H%M%S)";
+        export elapsed=$(( $date_end-$date_begin ));
+        echo "Elapsed: $elapsed seconds";
+    }
+
+    preexec_functions=(preexec_timestamp ${preexec_functions[@]})
+    precmd_functions=(precmd_timestamp ${precmd_functions[@]})
+    source ~/.bash-preexec.sh
+fi

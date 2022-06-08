@@ -4,6 +4,7 @@ WORKDIR /resources
 
 COPY .vimrc /root/
 COPY .bashrc /root/
+COPY .bash-preexec.sh /root/
 
 RUN apt update
 RUN apt upgrade -y
