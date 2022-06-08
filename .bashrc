@@ -157,8 +157,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+function scTmux {
+	[ ! -d "./5-logs/tmuxlogs" ] && mkdir -p "./5-logs/tmuxlogs"
+	script -a -f -O /resources/5-logs/tmuxlogs/"$1"-"$2".log -c bash
+}
+
 function logCommands {
-    jsonlog=$(echo "{\"hostname\":\"$(hostname)\",\"user\":\"$(whoami)\",\"pid\":$$,\"cwd\":\"$(pwd)\",\"command\":\"$(history 1 | sed 's/^[ ]*[0-9]\+[ ]*//' )\",\"status_code\":$status_code,\"date_begin\":$date_begin,\"date_end\":$date_end,\"elapsed\":$elapsed}" >> ./5-logs/rsyslogcommands/commands.log)
+    jsonlog=$(echo "{\"hostname\":\"$(hostname)\",\"user\":\"$(whoami)\",\"pid\":$$,\"cwd\":\"$(pwd)\",\"command\":\"$(history 1 | sed 's/^[ ]*[0-9]\+[ ]*//' )\",\"status_code\":$status_code,\"date_begin\":$date_begin,\"date_end\":$date_end,\"elapsed\":$elapsed}" >> /resources/5-logs/rsyslogcommands/commands.log)
 #    logger -p local6.debug "$jsonlog"
 }
 
