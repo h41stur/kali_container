@@ -167,6 +167,17 @@ function logCommands {
 #    logger -p local6.debug "$jsonlog"
 }
 
+function nuclei-list {
+        dir=`pwd`
+        if [ $# -eq 0 ]; then
+                        echo -e "nuclei-list <host list>"
+                        echo
+        else
+                        for i in $(cat $1); do nuclei -u $i -t /root/nuclei-templates -o $dir/$i.json -json -silent; done
+        fi
+}
+
+
 # BASH PREEXEC
 
 if [[ -f ~/.bash-preexec.sh ]]; then
