@@ -170,10 +170,17 @@ function logCommands {
 function nuclei-list {
         dir=`pwd`
         if [ $# -eq 0 ]; then
-                        echo -e "nuclei-list <host list>"
+                        echo -e "\n\tnuclei-list <host list>"
                         echo
         else
-                        for i in $(cat $1); do nuclei -u $i -t /root/nuclei-templates -o $dir/$i.json -json -silent; done
+                        for i in $(cat $1); do 
+                            num=$(echo "$i" | grep '//' | wc -l)
+                            if [ $num -eq 0 ]; then
+                                nuclei -u https://$i -t /root/nuclei-templates -o $dir/$(echo $i | cut -d'/' -f1).json -json -silent
+                            else
+                                nuclei -u $i -t /root/nuclei-templates -o $dir/$(echo $i | cut -d'/' -f3).json -json -silent
+                            fi
+                        done
         fi
 }
 
