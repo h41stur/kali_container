@@ -136,6 +136,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --color-scale"
 alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
+alias https='openssl s_client -connect'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -165,6 +166,37 @@ function scTmux {
 function logCommands {
     jsonlog=$(echo "{\"hostname\":\"$(hostname)\",\"user\":\"$(whoami)\",\"pid\":$$,\"cwd\":\"$(pwd)\",\"command\":\"$(history 1 | sed 's/^[ ]*[0-9]\+[ ]*//' )\",\"status_code\":$status_code,\"date_begin\":$date_begin,\"date_end\":$date_end,\"elapsed\":$elapsed}" >> /resources/5-logs/rsyslogcommands/commands.log)
 #    logger -p local6.debug "$jsonlog"
+}
+
+function cert {
+	if [ $# -eq 0 ]
+	then
+		echo -n "cert domain"
+		echo
+	else
+		curl -s "https://crt.sh/?q=%.$1" -o /tmp/rawdata; cat /tmp/rawdata | grep "<TD>" | grep -vE "style" | cut -d ">" -f 2 | grep -Po '.*(?=....$)' | sort -u | grep -v "*"
+	fi
+}
+
+function e64 {
+		if [ $# -eq 0 ]; then
+				input=$(</dev/stdin)
+		else
+				input=$1
+		fi
+
+		echo -n "$input" | base64
+}
+
+function d64 {
+    if [ $# -eq 0 ]; then
+        input=$(</dev/stdin)
+    else
+        input=$1
+    fi
+
+    echo -n "$input" | base64 -d
+    echo
 }
 
 # BASH PREEXEC
