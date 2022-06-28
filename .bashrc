@@ -168,6 +168,7 @@ function logCommands {
 #    logger -p local6.debug "$jsonlog"
 }
 
+<<<<<<< HEAD
 function cert {
 	if [ $# -eq 0 ]
 	then
@@ -198,6 +199,25 @@ function d64 {
     echo -n "$input" | base64 -d
     echo
 }
+=======
+function nuclei-list {
+        dir=`pwd`
+        if [ $# -eq 0 ]; then
+                        echo -e "\n\tnuclei-list <host list>"
+                        echo
+        else
+                        for i in $(cat $1); do 
+                            num=$(echo "$i" | grep '//' | wc -l)
+                            if [ $num -eq 0 ]; then
+                                nuclei -u https://$i -t /root/nuclei-templates -o $dir/$(echo $i | cut -d'/' -f1).json -json -silent
+                            else
+                                nuclei -u $i -t /root/nuclei-templates -o $dir/$(echo $i | cut -d'/' -f3).json -json -silent
+                            fi
+                        done
+        fi
+}
+
+>>>>>>> c8d57a4b100e6f386c3b79169c3b3d499292e5de
 
 # BASH PREEXEC
 
