@@ -168,7 +168,6 @@ function logCommands {
 #    logger -p local6.debug "$jsonlog"
 }
 
-<<<<<<< HEAD
 function cert {
 	if [ $# -eq 0 ]
 	then
@@ -199,7 +198,6 @@ function d64 {
     echo -n "$input" | base64 -d
     echo
 }
-=======
 function nuclei-list {
         dir=`pwd`
         if [ $# -eq 0 ]; then
@@ -217,7 +215,6 @@ function nuclei-list {
         fi
 }
 
->>>>>>> c8d57a4b100e6f386c3b79169c3b3d499292e5de
 
 # BASH PREEXEC
 
