@@ -215,6 +215,16 @@ function nuclei-list {
         fi
 }
 
+function keyb {
+    LAYOUT=$(setxkbmap -query | grep -oP "us|br")
+    if [ $LAYOUT = 'us'  ]
+        then
+                setxkbmap -model abnt2 -layout br -variant abnt2
+        else
+                setxkbmap us_intl
+    fi
+}
+
 
 # BASH PREEXEC
 

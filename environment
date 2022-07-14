@@ -1,0 +1,16 @@
+# START KALI-DEFAULTS CONFIG
+# Everything from here and until STOP KALI-DEFAULTS CONFIG
+# was installed by the kali-defaults package, and it will
+# be removed if ever the kali-defaults package is removed.
+# If you want to disable a line, please do NOT remove it,
+# as it would be added back when kali-defaults is upgraded.
+# Instead, comment the line out, and your change will be
+# preserved across upgrades.
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+COMMAND_NOT_FOUND_INSTALL_PROMPT=1
+POWERSHELL_UPDATECHECK=Off
+POWERSHELL_TELEMETRY_OPTOUT=1
+DOTNET_CLI_TELEMETRY_OPTOUT=1
+# STOP KALI-DEFAULTS CONFIG
+GTK_IM_MODULE=cedilla
+QT_IM_MODULE=cedilla
