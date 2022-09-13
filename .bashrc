@@ -137,6 +137,7 @@ alias l='ls -CF'
 alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --color-scale"
 alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
 alias https='openssl s_client -connect'
+alias nuclei='nuclei -t /root/nuclei-templates/'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
