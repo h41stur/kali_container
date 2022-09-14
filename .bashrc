@@ -138,6 +138,9 @@ alias ls="exa -lh --icons  --classify --sort=ext --group-directories-first -S --
 alias lr="exa -lR  --classify --sort=ext --group-directories-first -S --color-scale"
 alias https='openssl s_client -connect'
 alias nuclei='nuclei -t /root/nuclei-templates/'
+alias nginxpwner='python3 /opt/nginxpwner/nginxpwner.py'
+alias nginxpwner-no-header='python3 /opt/nginxpwner/nginx-pwner-no-server-header.py'
+alias corsy='python3 /opt/Corsy/corsy.py'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -226,6 +229,14 @@ function keyb {
     fi
 }
 
+function make-path {
+    if [ $# -eq 0 ]; then
+        echo -e "\n\tmake-path <lista entrada> <lista saida>"
+        echo
+    else
+        cat $1 | unfurl paths | cut -d"/" -f2-3 | sort -u > $2
+    fi
+}
 
 # BASH PREEXEC
 
