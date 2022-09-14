@@ -23,6 +23,7 @@ RUN pip install pwntools
 RUN gem install evil-winrm
 RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 RUN go install github.com/tomnomnom/unfurl@latest
+RUN mv /root/go/bin/unfurl /usr/bin/
 RUN git clone https://github.com/stark0de/nginxpwner.git /opt/nginxpwner
 RUN chmod +x /opt/nginxpwner/install.sh
 RUN /opt/nginxpwner/install.sh
