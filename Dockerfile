@@ -4,6 +4,7 @@ WORKDIR /resources
 
 COPY .vimrc /root/
 COPY .bashrc /root/
+COPY .bash_aliases /root/
 COPY .bash-preexec.sh /root/
 COPY .inputrc /root/
 
