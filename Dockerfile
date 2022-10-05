@@ -31,6 +31,7 @@ RUN chmod +x /opt/nginxpwner/install.sh
 RUN /opt/nginxpwner/install.sh
 RUN git clone https://github.com/s0md3v/Corsy.git /opt/Corsy
 RUN mv /root/go/bin/subfinder /usr/bin/
+RUN wapiti --update
 RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 RUN mv /root/go/bin/nuclei /usr/bin/
 RUN nuclei -update-templates
