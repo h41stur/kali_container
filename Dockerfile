@@ -31,6 +31,9 @@ RUN chmod +x /opt/nginxpwner/install.sh
 RUN /opt/nginxpwner/install.sh
 RUN git clone https://github.com/s0md3v/Corsy.git /opt/Corsy
 RUN mv /root/go/bin/subfinder /usr/bin/
+RUN git clone https://github.com/h41stur/nina.git /opt/nina
+RUN pip install -r /opt/nina/requirements.txt
+RUN cp /opt/nina/nina.py /usr/bin/nina
 RUN wapiti --update
 RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 RUN mv /root/go/bin/nuclei /usr/bin/
