@@ -241,13 +241,13 @@ if [[ -f ~/.bash-preexec.sh ]]; then
 
     preexec_timestamp() {
         export date_begin=$(date +%s);
-        echo -e "Begin: $(date +%Y%m%d%H%M%S)\n";
+        echo -e "Begin: $(date +%Y-%m-%d\ %H:%M:%S)\n";
     }
 
     precmd_timestamp() {
         export status_code="$?";
         export date_end=$(date +%s);
-        echo -e "\nEnd: $(date +%Y%m%d%H%M%S)";
+        echo -e "\nEnd: $(date +%Y-%m-%d\ %H:%M:%S)";
         export elapsed=$(( $date_end-$date_begin ));
         echo "Elapsed: $elapsed seconds";
     }
