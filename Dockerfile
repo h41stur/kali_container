@@ -22,6 +22,7 @@ RUN git clone https://github.com/longld/peda.git ~/peda
 RUN echo "source ~/peda/peda.py" >> ~/.gdbinit
 RUN pip install pwntools
 RUN pip install aort
+RUN pip install updog
 RUN gem install evil-winrm
 RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 RUN go install github.com/tomnomnom/unfurl@latest
