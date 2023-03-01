@@ -17,7 +17,7 @@ RUN echo "wireshark-common wireshark-common/install-setuid boolean true" | debco
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wireshark
 RUN apt install kali-tools-top10 -y
 RUN dbus-uuidgen > /etc/machine-id
-RUN apt install -y default-jdk sublist3r locate wget git vim golang python3 python3-pip feroxbuster nikto gem burpsuite hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan telnet netcat-traditional whois host gobuster ffuf jq firefox-esr exa exploitdb bash-completion iputils-ping freerdp2-x11 x11-xkb-utils gdb hash-identifier dnsutils wapiti hashcat
+RUN apt install -y default-jdk sublist3r locate wget git vim golang python3 python3-pip feroxbuster nikto gem burpsuite hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan telnet netcat-traditional whois host gobuster ffuf jq firefox-esr exa exploitdb bash-completion iputils-ping freerdp2-x11 x11-xkb-utils gdb hash-identifier dnsutils wapiti hashcat windows-binaries
 RUN git clone https://github.com/longld/peda.git ~/peda
 RUN echo "source ~/peda/peda.py" >> ~/.gdbinit
 RUN pip install pwntools
@@ -35,7 +35,7 @@ RUN mv /root/go/bin/subfinder /usr/bin/
 RUN git clone https://github.com/h41stur/nina.git /opt/nina
 RUN pip install -r /opt/nina/requirements.txt
 RUN cp /opt/nina/nina.py /usr/bin/nina
-RUN wapiti --update
+#RUN wapiti --update
 RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 RUN mv /root/go/bin/nuclei /usr/bin/
 RUN nuclei -update-templates
