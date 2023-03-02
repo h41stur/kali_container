@@ -20,9 +20,11 @@ RUN dbus-uuidgen > /etc/machine-id
 RUN apt install -y default-jdk sublist3r locate wget git vim golang python3 python3-pip feroxbuster nikto gem burpsuite hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan telnet netcat-traditional whois host gobuster ffuf jq firefox-esr exa exploitdb bash-completion iputils-ping freerdp2-x11 x11-xkb-utils gdb hash-identifier dnsutils wapiti hashcat windows-binaries
 RUN git clone https://github.com/longld/peda.git ~/peda
 RUN echo "source ~/peda/peda.py" >> ~/.gdbinit
-RUN pip install pwntools
-RUN pip install aort
-RUN pip install updog
+RUN apt install -y pipx
+RUN pipx ensurepath
+RUN pipx install pwntools
+RUN pipx install aort
+RUN pipx install updog
 RUN gem install evil-winrm
 RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 RUN go install github.com/tomnomnom/unfurl@latest
@@ -33,7 +35,7 @@ RUN /opt/nginxpwner/install.sh
 RUN git clone https://github.com/s0md3v/Corsy.git /opt/Corsy
 RUN mv /root/go/bin/subfinder /usr/bin/
 RUN git clone https://github.com/h41stur/nina.git /opt/nina
-RUN pip install -r /opt/nina/requirements.txt
+#RUN pip install -r /opt/nina/requirements.txt
 RUN cp /opt/nina/nina.py /usr/bin/nina
 #RUN wapiti --update
 RUN go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
