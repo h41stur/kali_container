@@ -231,6 +231,15 @@ function make-path {
     fi
 }
 
+function nports {
+    if [ $# -eq 0 ]; then
+        echo -e "\n\tnports IP"
+        echo
+    else
+        nmap -p- -T4 $1 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//
+    fi
+}
+
 # BASH PREEXEC
 
 if [[ -f ~/.bash-preexec.sh ]]; then
