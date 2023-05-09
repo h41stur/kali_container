@@ -33,7 +33,7 @@ RUN set -eux; \
         git clone https://github.com/h41stur/nina.git /opt/nina; \
         pip install -r /opt/nina/requirements.txt; \
         ln -sf /opt/nina/nina.py /usr/bin/nina; \
-        #wapiti --update; \
+        wapiti --update; \
         go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest; \
         mv /root/go/bin/nuclei /usr/bin/; \
         nuclei -update-templates; \
