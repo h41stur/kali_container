@@ -135,7 +135,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-export PATH='$PATH:/root/.local/bin'
+export PATH="$PATH:/root/.local/bin"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
