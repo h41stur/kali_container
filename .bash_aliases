@@ -14,3 +14,4 @@ alias nginxpwner-no-header='python3 /opt/nginxpwner/nginx-pwner-no-server-header
 alias corsy='python3 /opt/Corsy/corsy.py'
 alias aort='aort --quiet'
 alias wapiti='wapiti --color'
+alias smbclient="smbclient --socket-options='TCP_NODELAY IPTOS_LOWDELAY SO_KEEPALIVE SO_RCVBUF=131072 SO_SNDBUF=131072'"
