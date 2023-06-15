@@ -13,8 +13,13 @@ RUN set -eux; \
         apt upgrade -y; \
         apt dist-upgrade -y; \
         echo "wireshark-common wireshark-common/install-setuid boolean true" | debconf-set-selections; \
-        DEBIAN_FRONTEND=noninteractive apt-get install -y dbus-x11 packagekit-gtk3-module libcanberra-gtk3-0 bash-completion python3 python3-pip kali-tools-top10 wireshark default-jdk sublist3r locate wget git vim golang nikto gem hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan telnet netcat-traditional whois host gobuster ffuf jq firefox-esr exa exploitdb bash-completion iputils-ping freerdp2-x11 x11-xkb-utils gdb hash-identifier dnsutils wapiti hashcat windows-binaries rdesktop ftp pipx smbclient seclists; \
+        DEBIAN_FRONTEND=noninteractive apt-get install -y dbus-x11 packagekit-gtk3-module libcanberra-gtk3-0 bash-completion python3 python3-pip kali-tools-top10 wireshark default-jdk sublist3r locate wget git vim nikto gem hydra webshells whatweb xsser dirb dirbuster nmap proxychains4 tor sslscan wafw00f sqlmap wpscan telnet netcat-traditional whois host gobuster ffuf jq firefox-esr exa exploitdb bash-completion iputils-ping freerdp2-x11 x11-xkb-utils gdb hash-identifier dnsutils wapiti hashcat windows-binaries rdesktop ftp pipx smbclient seclists; \
         python3 -m pipx install impacket; \
+        wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz -O /tmp/go1.20.5.linux-amd64.tar.gz; \
+        rm -rf /usr/local/go; \
+        tar -C /usr/local -xzf /tmp/go1.20.5.linux-amd64.tar.gz; \
+        rm /tmp/go1.20.5.linux-amd64.tar.gz; \
+        export PATH=$PATH:/usr/local/go/bin; \
         rm -f /usr/lib/python3.11/EXTERNALLY-MANAGED; \
         dbus-uuidgen > /etc/machine-id; \
         git clone https://github.com/longld/peda.git ~/peda; \

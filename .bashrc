@@ -136,6 +136,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 export PATH="$PATH:/root/.local/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
